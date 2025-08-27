@@ -1,0 +1,104 @@
+@use "../helpers/media";
+
+.tickets-grid {
+  display: grid;
+  gap: 8px;
+  max-width: 986px;
+  margin: 0 auto;
+
+  @include media.phone-up {
+    grid-template-columns: 324px;
+    justify-content: center;
+  }
+  @include media.lg-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include media.xl-up {
+    gap: 22px;
+  }
+  @include media.xxl-up {
+    gap: 28px;
+  }
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 8px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(34px);
+  background: rgba(255, 255, 255, 0.04);
+
+  &__title {
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--primary-color);
+
+    @include media.xl-up {
+      font-size: 28px;
+    }
+  }
+  &__price {
+    margin-top: 16px;
+    margin-bottom: 32px;
+    font-weight: 700;
+    font-size: 68px;
+    line-height: 1.1;
+
+    @include media.xl-up {
+      font-size: 78px;
+    }
+  }
+  &__content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 38px;
+
+    @include media.lg-up {
+      gap: 0;
+      margin-bottom: 38px;
+    }
+    @include media.xl-up {
+      margin-bottom: 45px;
+    }
+  }
+  &__icon {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    @include media.lg-up {
+      margin-bottom: 38px;
+    }
+
+    svg {
+      max-height: 100%;
+    }
+  }
+  &__list {
+  }
+  &__list-item {
+    font-size: 16px;
+    line-height: 1.4;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+  &__button {
+    width: 100%;
+    margin-top: auto;
+
+    .btn,
+    .badge {
+      width: 100%;
+    }
+  }
+}

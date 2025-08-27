@@ -1,0 +1,34 @@
+<footer class="footer">
+  <div class="footer__inner container container_full-width">
+    <div class="footer__base">
+      <a href="#" class="footer__organizers-link" target="_blank">организаторы</a>
+    </div>
+    <div class="footer__side">
+      <ul class="social social_footer">
+        {% set social = [
+          {
+            'name': 'блюскай',
+            'label': 'Перейти на наш аккаунт в Блюскай',
+            'link': '#'
+          }, {
+            'name': 'икс',
+            'label': 'Перейти на наш аккаунт в Икс',
+            'link': '#'
+          }, {
+            'name': 'инстаграм',
+            'label': 'Перейти на наш аккаунт в Инстаграм',
+            'link': '#'
+          }, {
+            'name': 'тикток',
+            'label': 'Перейти на наш аккаунт в ТикТок',
+            'link': '#'
+          }
+        ] %}
+        {% for item in social %}
+          {% include "social-item.njk" %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bg"></div>
+</footer>

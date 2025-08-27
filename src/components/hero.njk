@@ -1,0 +1,30 @@
+<section class="hero">
+  <video class="hero__bg-video" autoplay="autoplay" muted="muted" playsinline="playsinline" loop="loop" preload="auto" poster="/assets/video/hero-video-poster.webp">
+    <source src="/assets/video/hero-video.webm" type="video/webm">
+    <source src="/assets/video/hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero__container container">
+    <div class="hero__top">
+      <a href="#" class="hero__logo" aria-label="Re:Location IT Summit">
+        {{ svgIcon("logo.svg") | safe }}
+      </a>
+    </div>
+    <div class="hero__content">
+      <div class="hero__info">
+        <div class="event-info">22 — 25 aпреля 2026</div>
+        <div class="event-info">
+          <span class="event-info__icon">
+            {{ svgIcon("barcelona-star.svg") | safe }}
+          </span>
+          Барселона
+        </div>
+      </div>
+      <h1 class="hero__title">
+        Вместе создаем возможности, нетворк и новую лучшую жизнь в эмиграции
+      </h1>
+      <div class="hero__buttons">
+        <a href="#tickets" class="btn">Купить билет</a>
+      </div>
+    </div>
+  </div>
+</section>

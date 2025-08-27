@@ -1,0 +1,30 @@
+<div class="ticket">
+  <div class="ticket__title">{{ticket.title}}</div>
+  <div class="ticket__price">{{ticket.price}}</div>
+
+  <div class="ticket__content">
+    {% if ticket.icon %}
+      <div class="ticket__icon">
+        {{ svgIcon(ticket.icon ~ '.svg') | safe }}
+      </div>
+    {% endif %}
+    {% if ticket.description %}
+      <ul class="ticket__list">
+        {% for line in ticket.description %}
+          <li class="ticket__list-item">{{ line }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  {% if ticket.buttonLink %}
+    <div class="ticket__button">
+      <a href="{{ ticket.buttonLink }}" class="btn">Купить билет</a>
+    </div>
+  {% endif %}
+  {% if ticket.buttonPlaceholder %}
+    <div class="ticket__button">
+      <div class="badge">{{ ticket.buttonPlaceholder }}</div>
+    </div>
+  {% endif %}
+</div>

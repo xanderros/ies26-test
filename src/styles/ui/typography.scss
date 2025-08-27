@@ -1,0 +1,28 @@
+@use "../helpers/media";
+
+.title {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.1;
+  text-align: center;
+
+  &_sm {
+    font-size: 28px;
+    line-height: 1.2;
+
+    @include media.lg-up {
+      font-size: 58px;
+      line-height: 1.1;
+    }
+  }
+
+  @include media.md-up {
+    font-size: 48px;
+  }
+  @include media.lg-up {
+    font-size: 58px;
+  }
+  @include media.xl-up {
+    font-size: 68px;
+  }
+}

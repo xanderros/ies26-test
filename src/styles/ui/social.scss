@@ -1,0 +1,49 @@
+@use "../helpers/media";
+
+.social-wrapper {
+  padding: 35px 0;
+}
+.social {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 18px;
+
+  @include media.md-up {
+    gap: 20px 40px;
+  }
+
+  &_main {
+    justify-content: center;
+
+    @include media.md-up {
+    }
+  }
+  &_footer {
+    @include media.md-up {
+      justify-content: flex-start;
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+    color: var(--font-color-base);
+    font-size: 14px;
+    line-height: 1.1;
+    text-transform: lowercase;
+    transition: color var(--transition-default);
+
+    @include media.xs-up {
+      font-size: 16px;
+    }
+    @include media.md-up {
+      font-size: 18px;
+    }
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}

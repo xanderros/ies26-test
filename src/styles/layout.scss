@@ -1,0 +1,132 @@
+@use "helpers/media";
+
+// Layout styles
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  font-weight: 500;
+  font-kerning: normal;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  color: var(--font-color-base);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.main {
+  flex: 1;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  min-width: var(--container-min-width);
+  max-width: var(--container-max-width);
+  padding-left: var(--container-padding-x);
+  padding-right: var(--container-padding-x);
+
+  &_full-width {
+    max-width: 100%;
+  }
+
+  &__no-padding {
+    @include media.sm-down {
+      margin: 0 calc(-1 * var(--container-padding-x));
+    }
+  }
+  &__small-padding-mobile {
+    @include media.sm-down {
+      margin: 0 calc(-1 * var(--container-padding-x) + 7px);
+    }
+  }
+}
+
+.section {
+  padding: 60px 0 0;
+
+  @include media.sm-up {
+    padding: 60px 0 20px;
+  }
+  @include media.lg-up {
+    padding: 100px 0 20px;
+  }
+
+  &_stats {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, var(--bg-color) 0, transparent 30%);
+      opacity: 0.36;
+      z-index: 1;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 1163px;
+      height: 204px;
+      border-radius: 50%;
+      transform: translate(-420px, -200px) rotate(-26deg);
+      background-color: var(--yellow);
+      filter: blur(340px);
+      opacity: 0.5;
+    }
+
+    @include media.xl-up {
+      padding: 140px 0;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 10;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__caption {
+    margin-bottom: 35px;
+
+    @include media.md-up {
+      margin-bottom: 45px;
+    }
+    @include media.lg-up {
+      margin-bottom: 60px;
+    }
+    @include media.xl-up {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.footer {
+  margin-top: auto;
+}

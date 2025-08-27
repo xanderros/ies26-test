@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>
+      {% block title %}IES26{% endblock %}
+    </title>
+
+    <meta name="language" content="Russian"/>
+
+    <!-- Critical CSS Inline -->
+    <style>
+      {{criticalCSS | safe}}
+    </style>
+
+    <!-- Non-critical CSS (async load) -->
+    <link rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+    <noscript>
+      <link rel="stylesheet" href="/css/style.css"/>
+    </noscript>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}IES26{% endblock %}"/>
+    <meta name="keywords" content=""/>
+    <link rel="canonical" href="{% block canonical %}{% endblock %}"/>
+
+    <!-- Preloading -->
+    <link rel="preload" href="/assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin="crossorigin"/>
+    <link rel="preload" href="/assets/fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin="crossorigin"/>
+    <link rel="preload" href="/assets/fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin="crossorigin"/>
+    <link rel="preload" href="/assets/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="crossorigin"/>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg"/>
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png"/>
+    <link rel="manifest" href="/assets/favicon/site.webmanifest"/>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:site_name" content="IES26"/>
+    <meta property="og:url" content="{% block og_url %}{% endblock %}"/>
+    <meta property="og:title" content="{% block og_title %}{% endblock %}"/>
+    <meta property="og:description" content="{% block og_description %}{% endblock %}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:image:type" content="image/png"/>
+    <meta property="og:image:alt" content="{% block og_image_alt %}{% endblock %}"/>
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:url" content="{% block twitter_url %}{% endblock %}"/>
+    <meta name="twitter:title" content="{% block twitter_title %}{% endblock %}"/>
+    <meta name="twitter:description" content="{% block twitter_description %}{% endblock %}"/>
+    <meta name="twitter:image" content="{% block twitter_image %}{% endblock %}"/>
+    <meta name="twitter:image:alt" content="{% block twitter_image_alt %}{% endblock %}"/>
+
+    <!-- Additional Head Content -->
+    {% block head %}{% endblock %}
+  </head>
+
+  <body>
+    <div class="wrapper">
+      {% include "header.njk" %}
+      <main class="main">
+        {% block content %}{% endblock %}
+      </main>
+      {% include "footer.njk" %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bundle.js" defer="defer"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+
+</html>

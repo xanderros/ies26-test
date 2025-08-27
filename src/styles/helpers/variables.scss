@@ -1,0 +1,57 @@
+@use "media";
+
+:root {
+  /* Colors */
+  --black: #000;
+  --white: #fff;
+  --white-dark: color-mix(in srgb, var(--white), black 14%);
+
+  --yellow: rgba(230, 253, 136, 1);
+  --yellow-transparent: rgba(230, 253, 136, 0.7);
+  --yellow-transparent-light: rgba(230, 253, 136, 0.25);
+
+  --primary-color: var(--yellow);
+  --primary-color-dark: color-mix(in srgb, var(--yellow), black 14%);
+
+  /* Fonts */
+  --font-family-base: Montserrat, sans-serif;
+  --font-color-base: var(--white);
+  --font-color-accent: var(--primary-color);
+
+  /* Borders */
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-color-accent: var(--primary-color);
+  --border-radius: 18px;
+
+  /* Backgrounds */
+  --bg-color: var(--black);
+  --bg-color-glass: rgba(255, 255, 255, 0.16);
+
+  /* Sizes */
+  --container-min-width: 320px;
+  --container-max-width: 1440px;
+  --container-padding-x: 20px;
+  --header-height: 52px; //?
+
+  /* Transitions */
+  --transition-default: 0.25s ease-out;
+  --transition-nav: 0.25s ease;
+
+  /* Media */
+  @include media.xs-up {
+    --container-padding-x: 28px;
+  }
+  @include media.sm-up {
+  }
+  @include media.md-up {
+    --container-padding-x: 32px;
+    --border-radius: 20px;
+  }
+  @include media.lg-up {
+  }
+  @include media.xl-up {
+    --header-height: 50px;
+    --container-padding-x: 58px;
+    --border-radius: 24px;
+  }
+}

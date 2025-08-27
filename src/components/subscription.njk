@@ -1,0 +1,41 @@
+<section class="section section_subscription" id="subscription">
+  <div class="container">
+    <div class="container__small-padding-mobile">
+      <div class="section__caption">
+        <h2 class="title title_sm">Будь в курсе новостей и распродаж билетов</h2>
+      </div>
+      <div class="subscription">
+        <form class="subscription__form" action="">
+          <input class="subscription__input" type="email" name="email" placeholder="Ваш email" required="required">
+          <button type="submit" class="subscription__btn">Подписаться</button>
+        </form>
+      </div>
+    </div>
+    <div class="social-wrapper">
+      <ul class="social social_main">
+        {% set social = [
+          {
+            'name': 'икс',
+            'label': 'Перейти на наш аккаунт в Икс',
+            'link': '#'
+          }, {
+            'name': 'инстаграм',
+            'label': 'Перейти на наш аккаунт в Инстаграм',
+            'link': '#'
+          }, {
+            'name': 'блюскай',
+            'label': 'Перейти на наш аккаунт в Блюскай',
+            'link': '#'
+          }, {
+            'name': 'тикток',
+            'label': 'Перейти на наш аккаунт в ТикТок',
+            'link': '#'
+          }
+        ] %}
+        {% for item in social %}
+          {% include "social-item.njk" %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<section class="section" id="inspiration">
+  <div class="container">
+    <div class="section__caption">
+      <h2 class="title title_sm">Мотивирующие доклады, меняющие жизнь встречи и эпичные вечеринки</h2>
+    </div>
+    <div class="swiper swiper_inspirations">
+      <div class="swiper-wrapper">
+        {% set inspirations = [
+          {
+            title: "Ждем экспатов со всей Европы",
+            text: "Мы ждем русскоговорящих предпринимателей, диджитал специалистов и им сочувствующих в солнечной Барселоне 20 — 25 апреля",
+            image: "inspiration_01"
+          }, {
+            title: "Море, солнце, пляж и Sangria",
+            text: "Конфа, где между лекциями о стартапах можно почилить на пляже, а нетворкинг проходит под аккомпонемент моря и сангрии ",
+            image: "inspiration_02"
+          }, {
+            title: "Незабываемый уикенд",
+            text: "Несколько дней программы включают: день знакомств, день конференции, день экскурсий и конечно взрывную афтепати ",
+            image: "inspiration_03"
+          }
+        ] %}
+        {% for item in inspirations %}
+          <div class="swiper-slide">
+            <div class="inspiration">
+              <div class="inspiration__top">
+                <h3 class="inspiration__title">{{item.title}}</h3>
+                <img src="assets/img/{{item.image}}@2x.webp" alt="" class="inspiration__img"/>
+              </div>
+              <div class="inspiration__content">
+                <p class="inspiration__text">{{item.text}}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

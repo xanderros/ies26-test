@@ -1,0 +1,139 @@
+@use "../helpers/media";
+
+.stats {
+  display: grid;
+  gap: 8px;
+  max-width: 1240px;
+  margin: 0 auto;
+
+  @include media.phone-up {
+    gap: 12px;
+  }
+  @include media.sm-up {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @include media.md-up {
+    grid-template-rows: 1fr 1fr;
+    gap: 22px;
+  }
+  @include media.lg-up {
+    grid-template: auto / 1fr 1fr 2fr;
+    gap: 10px;
+  }
+  @include media.xl-up {
+    gap: 28px;
+  }
+
+  &__item {
+    min-height: 169px;
+    padding: 22px 28px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+
+    @include media.md-up {
+      min-height: 260px;
+    }
+    @include media.lg-up {
+      min-height: 0;
+      padding: 8px 20px 22px;
+    }
+    @include media.xl-up {
+      padding: 22px 28px;
+    }
+
+    &_big {
+      @include media.sm-up {
+        grid-column: span 2;
+      }
+      @include media.md-up {
+        display: flex;
+        gap: 22px;
+
+        .stats {
+          &__inner {
+            width: calc(50% - 39px);
+          }
+        }
+      }
+      @include media.lg-up {
+        grid-column: auto;
+      }
+    }
+    &_with-bg {
+      background: url("../assets/img/bg-stats-barcelona@2x.webp") no-repeat
+        center/cover;
+    }
+  }
+  &__inner {
+    padding-top: 6px;
+    text-align: center;
+
+    @include media.md-up {
+      padding-top: 26px;
+    }
+  }
+  &__count {
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--font-color-accent);
+
+    @include media.md-up {
+      font-size: 88px;
+    }
+    @include media.lg-up {
+      font-size: 78px;
+    }
+    @include media.xl-up {
+      font-size: 88px;
+    }
+  }
+  &__text {
+    margin: 10px auto 0;
+    max-width: 16em;
+    font-size: 14px;
+    line-height: 1.4;
+
+    @include media.md-up {
+      margin-top: 18px;
+      max-width: 10em;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    @include media.lg-up {
+      font-size: 14px;
+    }
+    @include media.xl-up {
+      font-size: 16px;
+    }
+  }
+  &__button {
+    text-align: center;
+
+    @include media.md-down {
+      margin-top: 28px;
+    }
+    @include media.md-up {
+      align-self: center;
+    }
+
+    .btn {
+      @include media.sm-down {
+        width: 100%;
+      }
+      @include media.lg-up {
+        font-size: 14px;
+      }
+      @include media.xl-up {
+        font-size: 16px;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      @include media.xxl-up {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+    }
+  }
+}

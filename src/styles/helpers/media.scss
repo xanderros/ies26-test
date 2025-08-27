@@ -1,0 +1,130 @@
+$screen-xs: 361px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1400px;
+$screen-xxxl: 1900px;
+
+$screen-phone-max: 430px;
+$screen-tablet-max: 800px;
+
+// ** min-width ** //
+// Phones
+@mixin xs-up {
+  @media (min-width: #{$screen-xs}) {
+    @content;
+  }
+}
+
+// Landscape phones
+@mixin sm-up {
+  @media (min-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+// Small tablets
+@mixin md-up {
+  @media (min-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+// Tablets
+@mixin lg-up {
+  @media (min-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+// Laptops
+@mixin xl-up {
+  @media (min-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+// Desktops
+@mixin xxl-up {
+  @media (min-width: #{$screen-xxl}) {
+    @content;
+  }
+}
+
+// Large Desktops
+@mixin xxxl-up {
+  @media (min-width: #{$screen-xxxl}) {
+    @content;
+  }
+}
+
+// Popular phones large width
+@mixin phone-up {
+  @media (min-width: #{$screen-phone-max + 0.02}) {
+    @content;
+  }
+}
+
+// ** max-width ** //
+@mixin xs-down {
+  @media (max-width: #{$screen-xs - 0.02}) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  @media (max-width: #{$screen-sm - 0.02}) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media (max-width: #{$screen-md - 0.02}) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  @media (max-width: #{$screen-lg - 0.02}) {
+    @content;
+  }
+}
+
+@mixin xl-down {
+  @media (max-width: #{$screen-xl - 0.02}) {
+    @content;
+  }
+}
+
+@mixin xxl-down {
+  @media (max-width: #{$screen-xxl - 0.02}) {
+    @content;
+  }
+}
+
+@mixin xxxl-down {
+  @media (max-width: #{$screen-xxxl - 0.02}) {
+    @content;
+  }
+}
+
+// Popular phones large width
+@mixin phone-down {
+  @media (max-width: #{$screen-phone-max}) {
+    @content;
+  }
+}
+
+// Phones height
+@mixin phone-landscape {
+  @media (orientation: landscape) and (max-height: #{$screen-phone-max}) {
+    @content;
+  }
+}
+// Tablets height
+@mixin tablet-landscape {
+  @media (orientation: landscape) and (max-height: #{$screen-tablet-max}) {
+    @content;
+  }
+}
