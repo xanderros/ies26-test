@@ -7,8 +7,7 @@
   --white-dark: color-mix(in srgb, var(--white), black 14%);
 
   --yellow: rgba(230, 253, 136, 1);
-  --yellow-transparent: rgba(230, 253, 136, 0.7);
-  --yellow-transparent-light: rgba(230, 253, 136, 0.25);
+  --yellow-rgb: 230, 253, 136; // for rgba alpha channel
 
   --primary-color: var(--yellow);
   --primary-color-dark: color-mix(in srgb, var(--yellow), black 14%);

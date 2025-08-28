@@ -45,7 +45,7 @@
       background:
         radial-gradient(
           ellipse farthest-corner at 100% 100%,
-          var(--yellow-transparent-light) 0%,
+          rgba(var(--yellow-rgb), 0.2) 0%,
           var(--bg-color) 50%
         ),
         var(--bg-color);
