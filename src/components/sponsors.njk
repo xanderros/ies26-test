@@ -102,7 +102,7 @@
             {% for sponsor in tierData.sponsors %}
               <li class="sponsors__item">
                 <a href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-label="Посетить сайт {{ sponsor.name }}" class="sponsors__link">
-                  <img src="assets/img/sponsors/{{ sponsor.logo }}.webp" srcset="assets/img/sponsors/{{ sponsor.logo }}@2x.webp 2x" alt="{{ sponsor.name }}" class="sponsors__logo" loading="lazy">
+                  <img src="assets/img/sponsors/{{ sponsor.logo }}.webp" srcset="assets/img/sponsors/{{ sponsor.logo }}@2x.webp 2x" alt="{{ sponsor.name }}" class="sponsors__logo">
                 </a>
               </li>
             {% endfor %}

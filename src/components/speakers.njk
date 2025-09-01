@@ -128,7 +128,7 @@
       {% for speaker in speakers %}
         <div class="speaker" id="{{speaker.id}}">
           <div class="speaker__top">
-            <img src="assets/img/{{speaker.image}}.webp" alt="{{speaker.name}}" class="speaker__photo">
+            <img src="assets/img/{{speaker.image}}.webp" alt="{{speaker.name}}" class="speaker__photo" loading="lazy">
             <div class="speaker__social">
               {% for social in speaker.social %}
                 <a href="{{social.url}}" class="speaker__social-btn" target="_blank" aria-label="Перейти на аккаунт {{speaker.name}} в {{social.label}}">
