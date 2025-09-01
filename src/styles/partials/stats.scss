@@ -61,8 +61,12 @@
       }
     }
     &_with-bg {
-      background: url("../assets/img/bg-stats-barcelona@2x.webp") no-repeat
+      background: url("../assets/img/bg-stats-barcelona.webp") no-repeat
         center/cover;
+
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+        background-image: url("../assets/img/bg-stats-barcelona@2x.webp");
+      }
     }
   }
   &__inner {
@@ -94,6 +98,8 @@
     max-width: 16em;
     font-size: 14px;
     line-height: 1.4;
+    word-break: break-word;
+    overflow-wrap: break-word;
 
     @include media.md-up {
       margin-top: 18px;

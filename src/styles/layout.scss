@@ -56,19 +56,22 @@ body {
 }
 
 .section {
-  padding: 60px 0 20px;
+  padding: 40px 0;
 
-  @include media.sm-up {
-    padding: 60px 0 20px;
+  @include media.md-up {
+    padding: 60px 0;
   }
-  @include media.lg-up {
-    padding: 100px 0 20px;
+  @include media.xl-up {
+    padding: 80px 0;
   }
 
-  &_stats {
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &_with-bg {
     position: relative;
     overflow: hidden;
-    padding: 60px 0;
 
     &:before {
       content: "";
@@ -81,27 +84,46 @@ body {
       opacity: 0.36;
       z-index: 1;
     }
+  }
+  &_stats {
+    padding: 60px 0 40px;
+
+    @include media.md-up {
+      padding: 100px 0 60px;
+    }
+    @include media.xl-up {
+      padding: 140px 0;
+    }
+
     &:after {
       content: "";
       position: absolute;
       left: 50%;
       top: 0;
-      width: 1163px;
-      height: 204px;
+      width: 1600px;
+      height: 600px;
       border-radius: 50%;
-      transform: translate(-420px, -200px) rotate(-26deg);
-      background-color: var(--yellow);
-      filter: blur(340px);
-      opacity: 0.5;
-    }
-
-    @include media.xl-up {
-      padding: 140px 0;
+      background: radial-gradient(
+        100% 100% at center,
+        rgba(var(--yellow-rgb), 0.3) 0%,
+        rgba(var(--yellow-rgb), 0) 35%,
+        transparent 100%
+      );
+      transform: translate(-50%, -300px) rotate(-26deg);
+      opacity: 0.6;
     }
   }
-  &_subscription {
+  &_topics {
+    .section {
+      &__bg {
+        @include media.phone-down {
+          object-fit: contain;
+        }
+      }
+    }
   }
   &_tickets {
+    padding-top: 60px;
     background: radial-gradient(
       ellipse 133% 225px at top center,
       rgba(var(--yellow-rgb), 0.18) 0%,
@@ -109,6 +131,7 @@ body {
     );
 
     @include media.md-up {
+      padding-top: 80px;
       background: radial-gradient(
         ellipse 100% 296px at top center,
         rgba(var(--yellow-rgb), 0.18) 0%,
@@ -116,25 +139,37 @@ body {
       );
     }
     @include media.xl-up {
+      padding-top: 100px;
       background: radial-gradient(
         ellipse 100% 590px at top center,
         rgba(var(--yellow-rgb), 0.18) 0%,
         transparent 100%
       );
     }
+
+    &:target {
+      @include media.sm-up {
+        scroll-margin-top: 10px;
+      }
+    }
+  }
+  &_location {
+    padding: var(--header-height) 0 20px;
+  }
+  &_speakers,
+  &_sponsors {
+    &:target {
+      scroll-margin-top: 20px;
+
+      @include media.sm-up {
+        scroll-margin-top: 30px;
+      }
+    }
   }
 
   &__container {
     position: relative;
     z-index: 10;
-  }
-  &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
   &__caption {
     margin-bottom: 35px;
@@ -143,11 +178,20 @@ body {
       margin-bottom: 45px;
     }
     @include media.lg-up {
-      margin-bottom: 60px;
+      margin-bottom: 55px;
     }
-    @include media.xl-up {
-      margin-bottom: 75px;
+    @include media.xxl-up {
+      margin-bottom: 80px;
     }
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
   }
 }
 

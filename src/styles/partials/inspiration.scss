@@ -8,18 +8,30 @@
         padding: 0 calc(var(--container-padding-x) + 19px) 0
           var(--container-padding-x);
       }
-    }
-  }
 
-  .swiper-slide {
-    display: flex;
-    flex-direction: column;
-    height: auto;
+      .swiper-wrapper {
+        @include media.xl-up {
+          gap: 22px;
+        }
+      }
+      .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+        @include media.xl-up {
+          flex: 1;
+        }
+
+        .inspiration {
+          flex: 1;
+        }
+      }
+    }
   }
 }
 
 .inspiration {
-  flex: 1;
   position: relative;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);

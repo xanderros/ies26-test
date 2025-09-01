@@ -72,6 +72,8 @@
     line-height: 1.15;
     text-align: center;
     max-width: 17em;
+    word-break: break-word;
+    overflow-wrap: break-word;
 
     @include media.xs-up {
       font-size: 34px;

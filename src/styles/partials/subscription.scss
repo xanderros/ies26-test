@@ -6,9 +6,20 @@
   padding: 5px;
   border: 1px solid var(--border-color);
   border-radius: 999px;
+  transition: background-color var(--transition-default);
 
   @include media.xs-up {
     padding: 20px;
+  }
+
+  &:has(.subscription__input:focus) {
+    background-color: rgba(255, 255, 255, 0.07);
+
+    .subscription {
+      &__form {
+        box-shadow: 0 0 60px rgba(var(--yellow-rgb), 0.9);
+      }
+    }
   }
 
   &__form {
@@ -19,6 +30,7 @@
     border-radius: 999px;
     background-color: var(--white);
     box-shadow: 0 0 120px rgba(var(--yellow-rgb), 0.7);
+    transition: box-shadow var(--transition-default);
 
     @include media.md-up {
       padding: 4px;
@@ -58,7 +70,7 @@
     background-color: var(--primary-color);
     color: var(--black);
     font-weight: 700;
-    font-size: 12px; //?
+    font-size: 12px;
     line-height: 1.2;
     text-transform: uppercase;
     transition: background-color var(--transition-default);

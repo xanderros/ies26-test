@@ -1,42 +1,43 @@
+{% set expectations = [
+  {
+    title: "Бизнес и технетворкинг, питч ивнинг",
+    image: "expectations_01"
+  }, {
+    image: "expectations_02"
+  }, {
+    image: "expectations_03"
+  }, {
+    title: "Доклады и воркшопы про жизнь в эмиграции",
+    image: "expectations_04"
+  }, {
+    title: "Новые друзья и знакомства, спид френдинг",
+    image: "expectations_05"
+  }, {
+    image: "expectations_06"
+  }, {
+    image: "expectations_07"
+  }, {
+    title: "Совместная экскурсия по Барселоне",
+    image: "expectations_08"
+  }, {
+    title: "Секция карьерных советов",
+    image: "expectations_09"
+  }, {
+    image: "expectations_10"
+  }, {
+    image: "expectations_11"
+  }, {
+    title: "Вечеринка, которая точно запомнится",
+    image: "expectations_12"
+  }
+] %}
+
 <section class="section" id="expectations">
   <div class="container">
     <div class="section__caption">
       <h2 class="title">Что ожидать?</h2>
     </div>
     <div class="expectations">
-      {% set expectations = [
-        {
-          title: "Бизнес и технетворкинг, питч ивнинг",
-          image: "expectations_01"
-        }, {
-          image: "expectations_02"
-        }, {
-          image: "expectations_03"
-        }, {
-          title: "Доклады и воркшопы про жизнь в эмиграции",
-          image: "expectations_04"
-        }, {
-          title: "Новые друзья и знакомства, спид френдинг",
-          image: "expectations_05"
-        }, {
-          image: "expectations_06"
-        }, {
-          image: "expectations_07"
-        }, {
-          title: "Совместная экскурсия по Барселоне",
-          image: "expectations_08"
-        }, {
-          title: "Секция карьерных советов",
-          image: "expectations_09"
-        }, {
-          image: "expectations_10"
-        }, {
-          image: "expectations_11"
-        }, {
-          title: "Вечеринка, которая точно запомнится",
-          image: "expectations_12"
-        }
-      ] %}
       {% for item in expectations %}
         {% if item.title %}
           <div class="expectations__item expectations__item_title">

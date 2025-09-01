@@ -1,3 +1,23 @@
+{% set social = [
+  {
+    'name': 'икс',
+    'label': 'Перейти на наш аккаунт в Икс',
+    'link': '#'
+  }, {
+    'name': 'инстаграм',
+    'label': 'Перейти на наш аккаунт в Инстаграм',
+    'link': '#'
+  }, {
+    'name': 'блюскай',
+    'label': 'Перейти на наш аккаунт в Блюскай',
+    'link': '#'
+  }, {
+    'name': 'тикток',
+    'label': 'Перейти на наш аккаунт в ТикТок',
+    'link': '#'
+  }
+] %}
+
 <section class="section section_subscription" id="subscription">
   <div class="container">
     <div class="container__small-padding-mobile">
@@ -13,25 +33,6 @@
     </div>
     <div class="social-wrapper">
       <ul class="social social_main">
-        {% set social = [
-          {
-            'name': 'икс',
-            'label': 'Перейти на наш аккаунт в Икс',
-            'link': '#'
-          }, {
-            'name': 'инстаграм',
-            'label': 'Перейти на наш аккаунт в Инстаграм',
-            'link': '#'
-          }, {
-            'name': 'блюскай',
-            'label': 'Перейти на наш аккаунт в Блюскай',
-            'link': '#'
-          }, {
-            'name': 'тикток',
-            'label': 'Перейти на наш аккаунт в ТикТок',
-            'link': '#'
-          }
-        ] %}
         {% for item in social %}
           {% include "social-item.njk" %}
         {% endfor %}

@@ -1,7 +1,96 @@
-<section class="section" id="topics">
-  <div class="container">
-    <div class="section__caption">
-      <h2 class="title">О чем будем говорить?</h2>
+{% set topics = [
+  {
+    id: "speaker-anastasiya-abrashitova",
+    title: "Аренда - обзор рынка Европы",
+    name: "Анастасия Абрашитова",
+    image: "avatar_01"
+  }, {
+    id: "speaker-viktor-voronin",
+    title: "Обзор типичных налоговых оптимизаций",
+    name: "Виктор Воронин",
+    image: "avatar_02"
+  }, {
+    id: "speaker-nikolai-grishin",
+    title: "Инвистиции в недвижимость, где, как и зачем?",
+    name: "Николай Гришин",
+    image: "avatar_04"
+  }, {
+    id: "speaker-angelina-chizh",
+    title: "Поиск друзей и отношений",
+    name: "Ангелина Чиж",
+    image: "avatar_03"
+  }, {
+    id: "speaker-aleksei-sannikov",
+    title: "Получение гражданства",
+    name: "Алексей Санников",
+    image: "avatar_05"
+  }, {
+    id: "speaker-david-martirosyan",
+    title: "Поиск работы и занятости",
+    name: "Давид Мартиросян",
+    image: "avatar_03"
+  }
+] %}
+
+{% set topicsReverse = [
+  {
+    id: "speaker-anton-kortunov",
+    title: "Как вложиться в недвижимость и не пожалеть?",
+    name: "Антон Кортунов",
+    image: "avatar_02"
+  }, {
+    id: "speaker-stanislav-lem",
+    title: "Обзор европейских систем налогообложения",
+    name: "Станислав Лем",
+    image: "avatar_01"
+  }, {
+    id: "speaker-anastasiya-abrashitova-2",
+    title: "Обзор систем налогообложения",
+    name: "Анастасия Абрашитова",
+    image: "avatar_04"
+  }, {
+    id: "speaker-anton-kortunov-2",
+    title: "Поиск работы и занятости",
+    name: "Антон Кортунов",
+    image: "avatar_03"
+  }, {
+    id: "speaker-david-martirosyan-2",
+    title: "Инвистиции в Недвижимость, где, как и зачем?",
+    name: "Давид Мартиросян",
+    image: "avatar_05"
+  }
+] %}
+
+<section class="section section_topics section_with-bg" id="topics">
+  <picture>
+    <source media="(max-width: 767px)" srcset="assets/img/bg-topics_mob.webp">
+    <img class="section__bg" src="assets/img/bg-topics.webp" alt="">
+  </picture>
+  <div class="section__container">
+    <div class="container">
+      <div class="section__caption">
+        <h2 class="title">О чем будем говорить?</h2>
+      </div>
+    </div>
+    <div class="topics-container">
+      <div class="swiper swiper_topics swiper_topics_ltr">
+        <div class="swiper-wrapper">
+          {% for item in topics %}
+            <div class="swiper-slide">
+              {% include "topic-item.njk" %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="swiper swiper_topics swiper_topics_rtl">
+        <div class="swiper-wrapper">
+          {% for item in topicsReverse %}
+            <div class="swiper-slide">
+              {% include "topic-item.njk" %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -1,4 +1,126 @@
 @use "../helpers/media";
 
+.topics-container {
+  display: grid;
+  gap: 8px;
+
+  @include media.md-down {
+    padding: 0 var(--container-padding-x);
+  }
+  @include media.md-up {
+    gap: 22px;
+  }
+  @include media.xl-up {
+    gap: 28px;
+  }
+}
+
+.swiper {
+  &_topics {
+    &.swiper {
+      width: 100%;
+
+      .swiper-wrapper {
+        @include media.md-down {
+          display: grid;
+          gap: 8px;
+        }
+      }
+      .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+        @include media.md-up {
+          width: 518px;
+        }
+        @include media.xl-up {
+          width: 606px;
+        }
+
+        .topic {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
 .topic {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 18px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(29px);
+  background-color: var(--bg-color-glass);
+  text-decoration: none;
+  color: var(--font-color-base);
+  transition: all var(--transition-default);
+
+  @include media.xs-up {
+    padding: 18px 28px;
+  }
+  @include media.md-up {
+    gap: 23px;
+    padding: 28px 28px 25px;
+    min-height: 230px;
+  }
+  @include media.xl-up {
+    gap: 24px;
+    padding: 32px;
+    min-height: 260px;
+  }
+
+  &:hover {
+    backdrop-filter: blur(50px);
+  }
+
+  &__title {
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--primary-color);
+
+    @include media.xs-up {
+      font-size: 20px;
+    }
+    @include media.md-up {
+      font-size: 30px;
+    }
+    @include media.xl-up {
+      font-size: 38px;
+      line-height: 1.1;
+    }
+  }
+  &__speaker {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+
+    @include media.md-down {
+      display: none;
+    }
+  }
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 17px;
+
+    @include media.md-up {
+      width: 44px;
+      height: 44px;
+      margin-right: 20px;
+    }
+  }
+  &__name {
+    font-size: 16px;
+    line-height: 1.2;
+
+    @include media.xl-up {
+      font-size: 18px;
+    }
+  }
 }

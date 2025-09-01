@@ -1,7 +1,48 @@
-<section class="section" id="location">
-  <div class="container">
-    <div class="section__caption">
-      <h2 class="title">Локация</h2>
+{% set locationImages = [
+  {
+    desktop: "location-barcelona_01",
+    mobile: "location-barcelona_01_mob",
+    alt: "Fira Barcelona - Main View",
+    title: "Главный вход"
+  },
+  {
+    desktop: "location-barcelona_02",
+    mobile: "location-barcelona_02_mob",
+    alt: "Fira Barcelona - Interior View",
+    title: "Интерьер"
+  }
+] %}
+
+<section class="section section_location" id="location">
+  <div class="location">
+    <div class="swiper swiper_location">
+      <div class="swiper-wrapper">
+        {% for image in locationImages %}
+          <div class="swiper-slide">
+            <picture>
+              <source media="(max-width: 430px)" srcset="assets/img/{{ image.mobile }}.webp">
+              <img class="location__image" src="assets/img/{{ image.desktop }}.webp" alt="{{ image.alt }}">
+            </picture>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev location__arrow location__arrow_prev">
+        {{ svgIcon("arrow.svg") | safe }}
+      </div>
+      <div class="swiper-button-next location__arrow location__arrow_next">
+        {{ svgIcon("arrow.svg") | safe }}
+      </div>
+    </div>
+    <div class="location__inner container">
+      <div class="location__logo">
+        {{ svgIcon("fira-barcelona.svg") | safe }}
+      </div>
+      <div class="location__info">
+        <address class="location__address">Carrer de la Font del Mont, 51, Barcelona</address>
+        <div class="location__button">
+          <a href="#" target="_blank" class="btn">Показать на карте</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

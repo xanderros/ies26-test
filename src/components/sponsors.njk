@@ -1,7 +1,114 @@
-<section class="section" id="sponsors">
+{% set sponsorTiers = [
+  {
+    tier: "platinum",
+    title: "Платинум",
+    sponsors: [
+      {
+        name: "BCN IT Hub",
+        logo: "bcn-it-hub",
+        url: "https://t.me/bcn_ithub"
+      }
+    ]
+  },
+  {
+    tier: "gold",
+    title: "Голд",
+    sponsors: [
+      {
+        name: "IKEA",
+        logo: "ikea",
+        url: "https://www.ikea.com"
+      },
+      {
+        name: "Google Chrome",
+        logo: "google-chrome",
+        url: "https://www.google.com/chrome"
+      },
+      {
+        name: "Monks Coffee Roasters",
+        logo: "monks-coffee",
+        url: "https://monkscoffee.nl/"
+      },
+      {
+        name: "Picnic",
+        logo: "picnic-logo",
+        url: "https://picnic.app"
+      }
+    ]
+  },
+  {
+    tier: "silver",
+    title: "Сильвер",
+    sponsors: [
+      {
+        name: "YouTube",
+        logo: "youtube",
+        url: "https://youtube.com"
+      },
+      {
+        name: "Webflow",
+        logo: "webflow",
+        url: "https://webflow.com"
+      },
+      {
+        name: "Uber",
+        logo: "uber",
+        url: "https://uber.com"
+      },
+      {
+        name: "UniCredit",
+        logo: "unicredit",
+        url: "https://www.unicreditgroup.eu/"
+      },
+      {
+        name: "Meta",
+        logo: "meta",
+        url: "https://meta.com"
+      },
+      {
+        name: "Amazon",
+        logo: "amazon",
+        url: "https://amazon.com"
+      },
+      {
+        name: "Blogger",
+        logo: "blogger",
+        url: "https://blogger.com"
+      },
+      {
+        name: "Bluesky",
+        logo: "bluesky",
+        url: "https://bsky.app"
+      },
+      {
+        name: "Citi Handlowy",
+        logo: "citi-handlowy",
+        url: "https://www.citibank.pl/"
+      }
+    ]
+  }
+] %}
+
+<section class="section section_sponsors" id="sponsors">
   <div class="container">
     <div class="section__caption">
       <h2 class="title">Спонсоры</h2>
+    </div>
+    <div class="sponsors-container">
+      {% for tierData in sponsorTiers %}
+        <div class="sponsors sponsors_{{ tierData.tier }}">
+          <h2 class="sponsors__title">{{ tierData.title }}</h2>
+          <ul class="sponsors__list">
+            {% for sponsor in tierData.sponsors %}
+              <li class="sponsors__item">
+                <a href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-label="Посетить сайт {{ sponsor.name }}" class="sponsors__link">
+                  <img src="assets/img/sponsors/{{ sponsor.logo }}.webp" srcset="assets/img/sponsors/{{ sponsor.logo }}@2x.webp 2x" alt="{{ sponsor.name }}" class="sponsors__logo" loading="lazy">
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>

@@ -20,7 +20,7 @@ const isProduction = process.env.NODE_ENV === "production";
 const svgCache = new Map();
 
 function inlineSvgIcon(iconPath) {
-  // Проверяем кэш
+  // Check cache
   if (svgCache.has(iconPath)) {
     return svgCache.get(iconPath);
   }
@@ -30,7 +30,7 @@ function inlineSvgIcon(iconPath) {
   try {
     if (fs.existsSync(fullPath)) {
       const svgContent = fs.readFileSync(fullPath, "utf8");
-      // Убираем лишние пробелы и переносы строк
+      // Remove extra spaces and line breaks
       const optimizedSvg = svgContent.trim();
       svgCache.set(iconPath, optimizedSvg);
       return optimizedSvg;
@@ -67,7 +67,7 @@ const paths = {
     dest: "public",
   },
   images: {
-    src: "src/assets/img/*",
+    src: "src/assets/img/**/*",
     dest: "public/assets/img",
   },
   icons: {
@@ -93,57 +93,74 @@ function clean() {
   return del(["public/**", "!public"]);
 }
 
+// Clean source maps specifically for production
+function cleanSourceMaps() {
+  if (isProduction) {
+    return del(["public/css/*.map", "public/js/*.map"]);
+  }
+  return Promise.resolve();
+}
+
 // Process critical CSS
 function criticalCSS() {
-  let stream = gulp
-    .src(paths.styles.critical)
-    .pipe(
-      plumber({
-        errorHandler: notify.onError((error) => ({
-          title: "Critical CSS",
-          message: error.message,
-        })),
-      })
-    )
-    .pipe(sourcemaps.init())
-    .pipe(sass());
+  let stream = gulp.src(paths.styles.critical).pipe(
+    plumber({
+      errorHandler: notify.onError((error) => ({
+        title: "Critical CSS",
+        message: error.message,
+      })),
+    })
+  );
+
+  // Only initialize source maps in development
+  if (!isProduction) {
+    stream = stream.pipe(sourcemaps.init());
+  }
+
+  stream = stream.pipe(sass());
 
   if (isProduction) {
     stream = stream.pipe(cleanCSS());
   }
 
-  stream = stream
-    .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(paths.styles.dest))
-    .pipe(browserSync.stream());
+  // Only write source maps in development
+  if (!isProduction) {
+    stream = stream.pipe(sourcemaps.write("."));
+  }
+
+  stream = stream.pipe(gulp.dest(paths.styles.dest)).pipe(browserSync.stream());
 
   return stream;
 }
 
 // Process main styles
 function styles() {
-  let stream = gulp
-    .src(paths.styles.src)
-    .pipe(
-      plumber({
-        errorHandler: notify.onError((error) => ({
-          title: "Styles",
-          message: error.message,
-        })),
-      })
-    )
-    .pipe(sourcemaps.init())
-    .pipe(sass())
-    .pipe(concat("style.css"));
+  let stream = gulp.src(paths.styles.src).pipe(
+    plumber({
+      errorHandler: notify.onError((error) => ({
+        title: "Styles",
+        message: error.message,
+      })),
+    })
+  );
+
+  // Only initialize source maps in development
+  if (!isProduction) {
+    stream = stream.pipe(sourcemaps.init());
+  }
+
+  stream = stream.pipe(sass()).pipe(concat("style.css"));
 
   if (isProduction) {
     stream = stream.pipe(cleanCSS());
   }
 
-  stream = stream
-    .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(paths.styles.dest))
-    .pipe(browserSync.stream());
+  // Only write source maps in development
+  if (!isProduction) {
+    stream = stream.pipe(sourcemaps.write("."));
+  }
+
+  stream = stream.pipe(gulp.dest(paths.styles.dest)).pipe(browserSync.stream());
 
   return stream;
 }
@@ -311,7 +328,8 @@ function buildProduction(done) {
       videos,
       optimizeIcons
     ),
-    inlineCriticalCSS
+    inlineCriticalCSS,
+    cleanSourceMaps
   )(done);
 }
 
@@ -358,6 +376,7 @@ function dev(done) {
 
 // Export tasks
 exports.clean = clean;
+exports.cleanSourceMaps = cleanSourceMaps;
 exports.criticalCSS = criticalCSS;
 exports.styles = styles;
 exports.scripts = scripts;

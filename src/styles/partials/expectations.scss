@@ -43,7 +43,6 @@
         aspect-ratio: auto;
       }
 
-      // translucent dark background for better readability of text over the image
       &:after {
         content: "";
         position: absolute;
@@ -77,8 +76,8 @@
     line-height: 1.1;
     font-weight: 800;
     color: var(--font-color-accent);
+    word-break: break-word;
     overflow-wrap: break-word;
-    word-break: normal;
     z-index: 10;
 
     @include media.xs-up {

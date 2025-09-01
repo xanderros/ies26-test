@@ -5,7 +5,7 @@
 ```
 fr/
 ├── src/
-│   ├── components/     # Nunjucks components (hero, integrations, featured-work, etc.)
+│   ├── components/     # Nunjucks components (hero, stats, inspiration, etc.)
 │   ├── layouts/        # Layout (layout.njk)
 │   ├── pages/          # Pages (index.njk)
 │   ├── styles/         # SASS/SCSS files
@@ -28,3 +28,12 @@ fr/
 - Each major block is a separate file in `src/components/` (e.g., `header.njk`, `hero.njk`, etc.)
 - Main page (`src/pages/index.njk`) assembles them via `{% include %}`.
 - To change the order of blocks, simply change the include order in `index.njk`.
+
+## Technology Stack
+
+- **Templates**: Nunjucks
+- **Styling**: SASS/SCSS with modular architecture
+- **JavaScript**: ES6+ with Babel transpilation
+- **Build Tools**: Gulp 4 + Webpack 5
+- **Dev Server**: BrowserSync with hot reload
+- **Libraries**: Swiper.js for carousels

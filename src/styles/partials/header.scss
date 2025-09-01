@@ -130,8 +130,8 @@
       background: none;
       width: 48px;
       height: 48px;
-      margin-left: -7.5px; //?s
-      z-index: 200; //?
+      margin-left: -7.5px;
+      z-index: 200;
     }
     @include media.lg-up {
       display: none;
