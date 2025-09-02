@@ -11,7 +11,7 @@
     image: "avatar_02"
   }, {
     id: "speaker-nikolai-grishin",
-    title: "Инвистиции в недвижимость, где, как и зачем?",
+    title: "Инвестиции в недвижимость: где, как и зачем?",
     name: "Николай Гришин",
     image: "avatar_04"
   }, {
@@ -32,7 +32,7 @@
   }
 ] %}
 
-{% set topicsReverse = [
+{% set topicsReversed = [
   {
     id: "speaker-anton-kortunov",
     title: "Как вложиться в недвижимость и не пожалеть?",
@@ -55,7 +55,7 @@
     image: "avatar_03"
   }, {
     id: "speaker-david-martirosyan-2",
-    title: "Инвистиции в Недвижимость, где, как и зачем?",
+    title: "Инвестиции в Недвижимость: где, как и зачем?",
     name: "Давид Мартиросян",
     image: "avatar_05"
   }
@@ -73,19 +73,19 @@
       </div>
     </div>
     <div class="topics-container">
-      <div class="swiper swiper_topics swiper_topics_ltr">
-        <div class="swiper-wrapper">
+      <div class="embla embla_topics embla_topics_default">
+        <div class="embla__container">
           {% for item in topics %}
-            <div class="swiper-slide">
+            <div class="embla__slide">
               {% include "topic-item.njk" %}
             </div>
           {% endfor %}
         </div>
       </div>
-      <div class="swiper swiper_topics swiper_topics_rtl">
-        <div class="swiper-wrapper">
-          {% for item in topicsReverse %}
-            <div class="swiper-slide">
+      <div class="embla embla_topics embla_topics_reversed">
+        <div class="embla__container">
+          {% for item in topicsReversed %}
+            <div class="embla__slide">
               {% include "topic-item.njk" %}
             </div>
           {% endfor %}

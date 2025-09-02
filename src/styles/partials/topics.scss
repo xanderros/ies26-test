@@ -15,31 +15,47 @@
   }
 }
 
-.swiper {
+.embla {
   &_topics {
-    &.swiper {
+    &.embla {
       width: 100%;
+      overflow: hidden;
 
-      .swiper-wrapper {
-        @include media.md-down {
-          display: grid;
-          gap: 8px;
+      .embla {
+        &__container {
+          @include media.md-down {
+            display: grid;
+            gap: 8px;
+          }
+          @include media.md-up {
+            display: flex;
+            will-change: transform;
+            gap: 22px;
+            padding: 0 22px;
+          }
+          @include media.xl-up {
+            gap: 28px;
+            padding: 0 28px;
+          }
         }
-      }
-      .swiper-slide {
-        display: flex;
-        flex-direction: column;
-        height: auto;
+        &__slide {
+          @include media.md-down {
+            width: 100%;
+          }
+          @include media.md-up {
+            width: 518px;
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+          }
+          @include media.xl-up {
+            width: 606px;
+          }
 
-        @include media.md-up {
-          width: 518px;
-        }
-        @include media.xl-up {
-          width: 606px;
-        }
-
-        .topic {
-          flex: 1;
+          .topic {
+            flex: 1;
+          }
         }
       }
     }
@@ -75,6 +91,12 @@
 
   &:hover {
     backdrop-filter: blur(50px);
+
+    .topic {
+      &__arrow {
+        opacity: 1;
+      }
+    }
   }
 
   &__title {
@@ -93,16 +115,30 @@
       line-height: 1.1;
     }
   }
-  &__speaker {
+  &__bottom {
+    margin-top: auto;
     display: flex;
     align-items: center;
-    margin-top: auto;
 
     @include media.md-down {
       display: none;
     }
   }
+  &__arrow {
+    opacity: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px 0;
+    transition: opacity var(--transition-default);
+  }
+  &__speaker {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
   &__avatar {
+    flex-shrink: 0;
     width: 44px;
     height: 44px;
     border-radius: 50%;

@@ -29,6 +29,11 @@
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   background-color: var(--bg-color-glass);
+  transition: transform var(--transition-default);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &__title {
     font-size: 20px;

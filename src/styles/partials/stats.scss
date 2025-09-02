@@ -73,8 +73,8 @@
     padding-top: 6px;
     text-align: center;
 
-    @include media.md-up {
-      padding-top: 26px;
+    @include media.sm-up {
+      padding: 25px 0;
     }
   }
   &__count {
@@ -117,10 +117,17 @@
   &__button {
     text-align: center;
 
-    @include media.md-down {
+    @include media.sm-down {
       margin-top: 28px;
     }
+    @include media.sm-up {
+      margin-top: 10px;
+    }
+    @include media.md-down {
+      padding-bottom: 18px;
+    }
     @include media.md-up {
+      margin-top: 0;
       align-self: center;
     }
 

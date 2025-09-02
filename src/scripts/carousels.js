@@ -1,154 +1,148 @@
-import Swiper from "swiper";
-import { Navigation, Autoplay, FreeMode, EffectFade } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
+import EmblaCarousel from "embla-carousel";
+import AutoScroll from "embla-carousel-auto-scroll";
+import Fade from "embla-carousel-fade";
 
-let swiperInspirations = null;
-let swiperTopics = null;
-let swiperTopicsReverse = null;
-let swiperLocation = null;
+// Global variables for Embla carousels
+const carousels = {
+  topicsDefault: null,
+  topicsReversed: null,
+  inspirations: null,
+  location: null,
+};
 
-function initSwiperInspirations() {
-  // Destroy existing swiper if it exists
-  if (swiperInspirations) {
-    swiperInspirations.destroy(true, true);
-    swiperInspirations = null;
+// Navigation cleanup functions storage
+const cleanupFunctions = new Map();
+
+// Utility: Destroy carousel and cleanup
+const destroyCarousel = (name) => {
+  const cleanup = cleanupFunctions.get(name);
+  if (cleanup) {
+    cleanup();
+    cleanupFunctions.delete(name);
   }
+  if (carousels[name]) {
+    carousels[name].destroy();
+    carousels[name] = null;
+  }
+};
 
-  if (window.innerWidth > 1200) return;
+// Utility: Setup navigation buttons
+const setupNavigation = (container, carousel, isLooping = false) => {
+  const prevButton = container.querySelector(".embla__button_prev");
+  const nextButton = container.querySelector(".embla__button_next");
 
-  // Check if inspirations swiper container exists
-  const inspirationsContainer = document.querySelector(".swiper_inspirations");
-  if (!inspirationsContainer) return;
+  if (!prevButton || !nextButton) return null;
 
-  // Initialize new swiper
-  swiperInspirations = new Swiper(inspirationsContainer, {
-    modules: [Navigation],
-    slidesPerView: 1,
-    spaceBetween: 18,
+  const prevHandler = () => carousel?.scrollPrev();
+  const nextHandler = () => carousel?.scrollNext();
+  const updateStates = () => {
+    prevButton.disabled = isLooping ? false : !carousel?.canScrollPrev();
+    nextButton.disabled = isLooping ? false : !carousel?.canScrollNext();
+  };
+
+  prevButton.addEventListener("click", prevHandler);
+  nextButton.addEventListener("click", nextHandler);
+  carousel.on("select", updateStates);
+  carousel.on("init", updateStates);
+
+  return () => {
+    prevButton.removeEventListener("click", prevHandler);
+    nextButton.removeEventListener("click", nextHandler);
+  };
+};
+
+// Initialize Embla Carousel for inspirations section
+function initEmblaInspirations() {
+  destroyCarousel("inspirations");
+
+  if (window.innerWidth > 992) return;
+
+  const container = document.querySelector(".embla_inspirations");
+  if (!container) return;
+
+  const options = {
+    loop: false,
+    align: "start",
+    dragFree: false,
+    slidesToScroll: 1,
+    containScroll: "trimSnaps",
     breakpoints: {
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 22,
-      },
-      992: {
-        slidesPerView: 3,
-        spaceBetween: 22,
-        allowTouchMove: false,
-      },
+      "(min-width: 768px)": { slidesToScroll: 2 },
+      "(min-width: 992px)": { slidesToScroll: 3 },
     },
-  });
+  };
+
+  carousels.inspirations = EmblaCarousel(container, options);
 }
 
-function initSwiperTopics(selector, reverseDirection = false) {
-  const swiperInstance =
-    selector === ".swiper_topics_ltr" ? swiperTopics : swiperTopicsReverse;
+// Initialize Embla Carousel for location section with fade effect
+function initEmblaLocation() {
+  destroyCarousel("location");
 
-  // Destroy existing swiper if it exists and width < 768px
-  if (swiperInstance && window.innerWidth < 768) {
-    swiperInstance.destroy(true, true);
-    if (selector === ".swiper_topics_ltr") {
-      swiperTopics = null;
-    } else {
-      swiperTopicsReverse = null;
-    }
-    return;
-  }
+  const container = document.querySelector(".embla_location");
+  if (!container) return;
 
-  // Initialize or reinitialize swiper if width >= 768px
-  if (!swiperInstance && window.innerWidth >= 768) {
-    // Calculate offset for RTL slider
-    let offsetBefore = 0;
-    if (selector === ".swiper_topics_rtl") {
-      const swiperContainer = document.querySelector(selector);
-      const slide = swiperContainer?.querySelector(".swiper-slide");
-      if (slide) {
-        const computedStyle = window.getComputedStyle(slide);
-        const slideWidth = parseFloat(computedStyle.width);
-        const spaceBetween = window.innerWidth >= 1200 ? 28 : 22;
-        offsetBefore = (slideWidth + spaceBetween) / 2;
-      }
-    }
-
-    const newSwiper = new Swiper(selector, {
-      modules: [Autoplay, FreeMode],
-      loop: true,
-      autoplay: {
-        delay: 1500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-        reverseDirection: reverseDirection,
-      },
-      speed: 3000,
-      freeMode: true,
-      freeModeMomentum: false,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      spaceBetween: 22,
-      slidesOffsetBefore: offsetBefore,
-      effect: "slide",
-      grabCursor: true,
-      breakpoints: {
-        768: {
-          spaceBetween: 22,
-        },
-        1200: {
-          spaceBetween: 28,
-        },
-      },
-    });
-
-    // Store the instance in the appropriate variable
-    if (selector === ".swiper_topics_ltr") {
-      swiperTopics = newSwiper;
-    } else {
-      swiperTopicsReverse = newSwiper;
-    }
-  }
-}
-
-function initSwiperLocation() {
-  // Destroy existing swiper if it exists
-  if (swiperLocation) {
-    swiperLocation.destroy(true, true);
-  }
-
-  // Check if location swiper container exists
-  const locationContainer = document.querySelector(".swiper_location");
-  if (!locationContainer) return;
-
-  // Initialize new swiper
-  swiperLocation = new Swiper(locationContainer, {
-    modules: [Navigation, EffectFade],
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true,
-    },
-    speed: 600,
+  const options = {
     loop: true,
-    navigation: {
-      nextEl: ".location__arrow_next",
-      prevEl: ".location__arrow_prev",
-    },
-    allowTouchMove: true,
-    grabCursor: true,
-  });
+    containScroll: "trimSnaps",
+    speed: 10,
+  };
+  carousels.location = EmblaCarousel(container, options, [Fade()]);
+
+  const cleanup = setupNavigation(container, carousels.location, true);
+  if (cleanup) cleanupFunctions.set("location", cleanup);
 }
 
-initSwiperInspirations();
-initSwiperTopics(".swiper_topics_ltr", false);
-initSwiperTopics(".swiper_topics_rtl", true);
-initSwiperLocation();
+// Initialize Embla Carousel for topics section with AutoScroll plugin
+function initEmblaTopics() {
+  ["topicsDefault", "topicsReversed"].forEach(destroyCarousel);
 
-// Reinitialize on resize with debounce
+  if (window.innerWidth < 768) return;
+
+  const baseOptions = {
+    loop: true,
+    dragFree: false,
+  };
+
+  const autoScrollConfig = {
+    startDelay: 0,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+    stopOnFocusIn: false,
+  };
+
+  // Default topics carousel (left-to-right)
+  const defaultContainer = document.querySelector(".embla_topics_default");
+  if (defaultContainer) {
+    carousels.topicsDefault = EmblaCarousel(defaultContainer, baseOptions, [
+      AutoScroll({ ...autoScrollConfig, speed: 1 }),
+    ]);
+  }
+
+  // Reversed topics carousel (right-to-left)
+  const reversedContainer = document.querySelector(".embla_topics_reversed");
+  if (reversedContainer) {
+    carousels.topicsReversed = EmblaCarousel(reversedContainer, baseOptions, [
+      AutoScroll({ ...autoScrollConfig, speed: -1 }),
+    ]);
+  }
+}
+
+// Initialize all carousels
+const initAllCarousels = () => {
+  initEmblaInspirations();
+  initEmblaLocation();
+  initEmblaTopics();
+};
+
+// Initialize
+initAllCarousels();
+
+// Debounced resize handler
 let resizeTimer;
-window.addEventListener("resize", () => {
+const handleResize = () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    initSwiperInspirations();
-    initSwiperTopics(".swiper_topics_ltr", false);
-    initSwiperTopics(".swiper_topics_rtl", true);
-    initSwiperLocation();
-  }, 250); // Debounce resize events
-});
+  resizeTimer = setTimeout(initAllCarousels, 250);
+};
+
+window.addEventListener("resize", handleResize);

@@ -1,63 +1,96 @@
 @use "../helpers/media";
 
-.swiper {
+.embla {
   &_location {
-    &.swiper {
+    &.embla {
       position: absolute;
       width: 100%;
       height: 100%;
+      overflow: hidden;
 
-      .swiper-button-next,
-      .swiper-button-prev {
-        margin-top: 0;
-        top: auto;
-        left: auto;
-        bottom: 28px;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        border: 1px solid var(--primary-color);
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.01);
-        transition: backdrop-filter var(--transition-default);
-        z-index: 5;
-
-        @include media.sm-down {
-          width: 48px;
-          bottom: 50%;
-          border-radius: 0;
-          margin-bottom: -35px;
-          border: none;
-          background: none;
-          backdrop-filter: none;
+      .embla {
+        &__container {
+          display: flex;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
         }
-
-        &:hover {
-          backdrop-filter: blur(20px);
+        &__slide {
+          flex-shrink: 0;
+          width: 100%;
+          height: 100%;
+          position: relative;
         }
+        &__button {
+          margin-top: 0;
+          top: auto;
+          left: auto;
+          bottom: 28px;
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          border: 1px solid var(--primary-color);
+          backdrop-filter: blur(10px);
+          background-color: rgba(255, 255, 255, 0.01);
+          transition: backdrop-filter var(--transition-default);
+          z-index: 5;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
 
-        &::after {
-          content: none;
+          @include media.sm-down {
+            width: 48px;
+            bottom: 50%;
+            border-radius: 0;
+            margin-bottom: -35px;
+            border: none;
+            background: none;
+            backdrop-filter: none;
+          }
+
+          &:hover {
+            @include media.sm-up {
+              backdrop-filter: blur(20px);
+            }
+          }
+
+          &:disabled {
+            opacity: 0.3;
+          }
+
+          &_prev {
+            left: var(--container-padding-x);
+            transform: scaleX(-1);
+
+            @include media.sm-down {
+              left: 0;
+            }
+          }
+          &_next {
+            right: var(--container-padding-x);
+
+            @include media.sm-down {
+              right: 0;
+            }
+          }
+
+          svg {
+            width: auto;
+            height: auto;
+          }
         }
-
-        svg {
-          width: auto;
-          height: auto;
-        }
-      }
-      .swiper-button-prev {
-        left: var(--container-padding-x);
-        transform: scaleX(-1);
-
-        @include media.sm-down {
-          left: 0;
-        }
-      }
-      .swiper-button-next {
-        right: var(--container-padding-x);
-
-        @include media.sm-down {
-          right: 0;
+        &__sr-only {
+          position: absolute;
+          padding: 0;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          clip-path: inset(50%);
+          border: 0;
         }
       }
     }

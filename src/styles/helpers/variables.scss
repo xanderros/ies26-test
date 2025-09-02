@@ -1,22 +1,15 @@
 @use "media";
 
-$white: #fff;
-$white-dark: darken($white, 12%);
-
-$yellow: rgba(230, 253, 136, 1); // #e6fd88
-$yellow-dark: darken($yellow, 12%);
-
 :root {
   /* Colors */
   --black: #000;
-  --white: #{$white};
-  --white-dark: #{$white-dark};
+  --white: #fff;
 
-  --yellow: #{$yellow};
+  --yellow: rgba(230, 253, 136, 1);
   --yellow-rgb: 230, 253, 136; // for rgba alpha channel
 
   --primary-color: var(--yellow);
-  --primary-color-dark: #{$yellow-dark};
+  --primary-color-contrast: rgb(217, 252, 76);
 
   /* Fonts */
   --font-family-base: Montserrat, sans-serif;
@@ -40,7 +33,7 @@ $yellow-dark: darken($yellow, 12%);
 
   /* Transitions */
   --transition-default: 0.25s ease-out;
-  --transition-nav: 0.25s ease;
+  --transition-nav: 0.25s ease-out;
 
   /* Media */
   @include media.xs-up {

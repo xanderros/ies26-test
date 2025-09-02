@@ -161,10 +161,6 @@
     word-break: break-word;
     overflow-wrap: break-word;
 
-    span {
-      border-bottom: 1px solid var(--primary-color);
-    }
-
     @include media.xs-up {
       line-height: 1.6;
     }

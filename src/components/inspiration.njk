@@ -19,14 +19,14 @@
     <div class="section__caption">
       <h2 class="title title_sm">Мотивирующие доклады, меняющие жизнь встречи и эпичные вечеринки</h2>
     </div>
-    <div class="swiper swiper_inspirations">
-      <div class="swiper-wrapper">
+    <div class="embla embla_inspirations">
+      <div class="embla__container">
         {% for item in inspirations %}
-          <div class="swiper-slide">
+          <div class="embla__slide">
             <div class="inspiration">
               <div class="inspiration__top">
                 <h3 class="inspiration__title">{{item.title}}</h3>
-                <img src="assets/img/{{item.image}}@2x.webp" alt="" class="inspiration__img" loading="lazy"/>
+                <img src="assets/img/{{item.image}}@2x.webp" alt="" class="inspiration__img"/>
               </div>
               <div class="inspiration__content">
                 <p class="inspiration__text">{{item.text}}</p>

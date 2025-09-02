@@ -1,30 +1,60 @@
 @use "../helpers/media";
 
-.swiper {
+.embla {
   &_inspirations {
-    &.swiper {
+    &.embla {
+      overflow: hidden;
+
       @include media.lg-down {
         margin: 0 calc(-1 * var(--container-padding-x));
-        padding: 0 calc(var(--container-padding-x) + 19px) 0
-          var(--container-padding-x);
       }
 
-      .swiper-wrapper {
-        @include media.xl-up {
-          gap: 22px;
-        }
-      }
-      .swiper-slide {
-        display: flex;
-        flex-direction: column;
-        height: auto;
+      .embla {
+        &__container {
+          display: flex;
+          will-change: transform;
 
-        @include media.xl-up {
-          flex: 1;
+          @include media.lg-down {
+            padding: 0 var(--container-padding-x);
+          }
+          @include media.lg-up {
+            gap: 22px;
+          }
         }
-
-        .inspiration {
+        &__slide {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
           flex: 1;
+
+          @include media.lg-down {
+            flex: 0 0 47%;
+          }
+          @include media.md-down {
+            flex-basis: 94%;
+          }
+
+          &:not(:first-child) {
+            @include media.lg-down {
+              flex-basis: calc(47% + var(--container-padding-x));
+              padding-left: var(--container-padding-x);
+              margin-left: -10px;
+            }
+            @include media.md-down {
+              flex-basis: calc(94% + var(--container-padding-x));
+            }
+          }
+
+          &:last-child {
+            @include media.lg-down {
+              margin-right: var(--container-padding-x);
+            }
+          }
+
+          .inspiration {
+            flex: 1;
+            user-select: none;
+          }
         }
       }
     }

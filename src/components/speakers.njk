@@ -3,7 +3,7 @@
     id: "speaker-anton-kortunov",
     name: "Антон Кортунов",
     company: "Hardware, Нидерланды",
-    topic: "<span>Доклад:</span> Как вложиться в недвижимость и не пожалеть?",
+    topic: "Доклад: Как вложиться в недвижимость и не пожалеть?",
     image: "speaker_01",
     social: [
       { name: "икс", label: "Икс", url: "#" },
@@ -14,7 +14,7 @@
     id: "speaker-anastasiya-abrashitova",
     name: "Анастасия Абрашитова",
     company: "Walmart, Испания",
-    topic: "<span>Доклад:</span> Аренда - обзор рынка Европы",
+    topic: "Доклад: Аренда - обзор рынка Европы",
     image: "speaker_02",
     social: [
       { name: "инст", label: "Инстаграм", url: "#" }
@@ -24,7 +24,7 @@
     id: "speaker-david-martirosyan",
     name: "Давид Мартиросян",
     company: "DeWalt, Германия",
-    topic: "<span>Доклад:</span> Поиск работы и занятости",
+    topic: "Доклад: Поиск работы и занятости",
     image: "speaker_03",
     social: [
       { name: "икс", label: "Икс", url: "#" },
@@ -36,7 +36,7 @@
     id: "speaker-viktor-voronin",
     name: "Виктор Воронин",
     company: "Software, Франция",
-    topic: "<span>Доклад:</span> Обзор типичных налоговых оптимизаций",
+    topic: "Доклад: Обзор типичных налоговых оптимизаций",
     image: "speaker_04",
     social: [
       { name: "икс", label: "Икс", url: "#" }
@@ -46,7 +46,7 @@
     id: "speaker-angelina-chizh",
     name: "Ангелина Чиж",
     company: "Hardware, Нидерланды",
-    topic: "<span>Доклад:</span> Поиск друзей и отношений",
+    topic: "Доклад: Поиск друзей и отношений",
     image: "speaker_05",
     social: [
       { name: "икс", label: "Икс", url: "#" },
@@ -57,7 +57,7 @@
     id: "speaker-stanislav-lem",
     name: "Станислав Лем",
     company: "Sol, Аргентина",
-    topic: "<span>Доклад:</span> Обзор европейских систем налогообложения",
+    topic: "Доклад: Обзор европейских систем налогообложения",
     image: "speaker_06",
     social: [
       { name: "икс", label: "Икс", url: "#" },
@@ -68,7 +68,7 @@
     id: "speaker-nikolai-grishin",
     name: "Николай Гришин",
     company: "Corona Extra, Италия",
-    topic: "<span>Доклад:</span> Инвистиции в недвижимость, где, как и зачем?",
+    topic: "Доклад: Инвестиции в недвижимость: где, как и зачем?",
     image: "speaker_07",
     social: [
       { name: "икс", label: "Икс", url: "#" },
@@ -79,7 +79,7 @@
     id: "speaker-aleksei-sannikov",
     name: "Алексей Санников",
     company: "Hardware, Нидерланды",
-    topic: "<span>Доклад:</span> Получение гражданства",
+    topic: "Доклад: Получение гражданства",
     image: "speaker_08",
     social: [
       { name: "инст", label: "Инстаграм", url: "#" }
@@ -89,7 +89,7 @@
     id: "speaker-anton-kortunov-2",
     name: "Антон Кортунов",
     company: "Hardware, Германия",
-    topic: "<span>Доклад:</span> Поиск работы и занятости",
+    topic: "Доклад: Поиск работы и занятости",
     image: "speaker_09",
     social: [
       { name: "икс", label: "Икс", url: "#" }
@@ -99,7 +99,7 @@
     id: "speaker-anastasiya-abrashitova-2",
     name: "Анастасия Абрашитова",
     company: "Burzum, Норвегия",
-    topic: "<span>Доклад:</span> Обзор систем налогообложения",
+    topic: "Доклад: Обзор систем налогообложения",
     image: "speaker_10",
     social: [
       { name: "инст", label: "Инстаграм", url: "#" }
@@ -109,7 +109,7 @@
     id: "speaker-david-martirosyan-2",
     name: "Давид Мартиросян",
     company: "Hardware, Нидерланды",
-    topic: "<span>Доклад:</span> Инвистиции в Недвижимость, где, как и зачем?",
+    topic: "Доклад: Инвестиции в Недвижимость: где, как и зачем?",
     image: "speaker_11",
     social: [
       { name: "икс", label: "Икс", url: "#" },
@@ -128,7 +128,7 @@
       {% for speaker in speakers %}
         <div class="speaker" id="{{speaker.id}}">
           <div class="speaker__top">
-            <img src="assets/img/{{speaker.image}}.webp" alt="{{speaker.name}}" class="speaker__photo" loading="lazy">
+            <img src="assets/img/{{speaker.image}}.webp" alt="{{speaker.name}}" class="speaker__photo">
             <div class="speaker__social">
               {% for social in speaker.social %}
                 <a href="{{social.url}}" class="speaker__social-btn" target="_blank" aria-label="Перейти на аккаунт {{speaker.name}} в {{social.label}}">
@@ -140,7 +140,7 @@
           <div class="speaker__content">
             <h3 class="speaker__name">{{speaker.name}}</h3>
             <div class="speaker__company">{{speaker.company}}</div>
-            <div class="speaker__topic">{{speaker.topic | safe}}</div>
+            <div class="speaker__topic">{{speaker.topic}}</div>
           </div>
         </div>
       {% endfor %}

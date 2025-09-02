@@ -13,10 +13,10 @@
 
 <section class="section section_location" id="location">
   <div class="location">
-    <div class="swiper swiper_location">
-      <div class="swiper-wrapper">
+    <div class="location__carousel embla embla_location">
+      <div class="embla__container">
         {% for image in locationImages %}
-          <div class="swiper-slide">
+          <div class="embla__slide">
             <picture>
               <source media="(max-width: 430px)" srcset="assets/img/{{ image.mobile }}.webp">
               <img class="location__image" src="assets/img/{{ image.desktop }}.webp" alt="{{ image.alt }}" loading="lazy">
@@ -24,12 +24,14 @@
           </div>
         {% endfor %}
       </div>
-      <div class="swiper-button-prev location__arrow location__arrow_prev">
+      <button class="embla__button embla__button_prev" type="button">
         {{ svgIcon("arrow.svg") | safe }}
-      </div>
-      <div class="swiper-button-next location__arrow location__arrow_next">
+        <span class="embla__sr-only">Назад</span>
+      </button>
+      <button class="embla__button embla__button_next" type="button">
         {{ svgIcon("arrow.svg") | safe }}
-      </div>
+        <span class="embla__sr-only">Вперёд</span>
+      </button>
     </div>
     <div class="location__inner container">
       <div class="location__logo">

@@ -27,14 +27,14 @@
   }
 
   &:hover {
-    background-color: #c9e176;
+    background-color: var(--white);
   }
 
   &_secondary {
     background-color: var(--white);
 
     &:hover {
-      background-color: var(--white-dark);
+      background-color: var(--primary-color);
     }
   }
 }
