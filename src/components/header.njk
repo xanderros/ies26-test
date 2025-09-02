@@ -1,5 +1,8 @@
 <header class="header">
   <nav class="header__nav" role="navigation">
+    <a href="/" class="header__logo" aria-label="Re:Location IT Summit">
+      {{ svgIcon("logo.svg") | safe }}
+    </a>
     <ul class="header__nav-list">
       <li class="header__nav-item">
         <a href="#about" class="header__nav-link">О мероприятии</a>
@@ -17,6 +20,9 @@
         <a href="#sponsors" class="header__nav-link">Спонсоры</a>
       </li>
     </ul>
+    <div class="header__nav-btn">
+      <a href="#tickets" class="btn">Купить билет</a>
+    </div>
   </nav>
   <button class="header__burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
     <span class="header__burger-line header__burger-line_top" aria-hidden="true"></span>

@@ -26,7 +26,9 @@ function initNavigation() {
   });
 
   // Close menu when clicking on link
-  const navLinks = document.querySelectorAll(".header__nav-link");
+  const navLinks = document.querySelectorAll(
+    ".header__nav-link, .header__nav-btn"
+  );
   navLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
   });

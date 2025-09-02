@@ -35,20 +35,17 @@
   }
   &__nav {
     @include media.lg-down {
-      display: flex;
+      display: grid;
+      align-items: center;
+      justify-items: center;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      padding: calc(var(--header-height) + 40px) 0;
-      background:
-        radial-gradient(
-          ellipse farthest-corner at 100% 100%,
-          rgba(var(--yellow-rgb), 0.2) 0%,
-          var(--bg-color) 50%
-        ),
-        var(--bg-color);
+      padding: calc(var(--header-height) + 5vh) 0 5vh; //?
+      backdrop-filter: blur(16px);
+      background: rgba(0, 0, 0, 0.1);
       overflow-x: hidden;
       overflow-y: auto;
       transform: translateX(-100%);
@@ -65,6 +62,8 @@
       flex: 1;
       flex-direction: column;
       justify-content: center;
+      padding-top: 25px;
+      padding-bottom: 15px;
     }
     @include media.lg-up {
       flex-direction: row;
@@ -73,20 +72,16 @@
   }
   &__nav-link {
     display: block;
+    padding: clamp(15px, 4vw, 23px) var(--container-padding-x);
     text-decoration: none;
     text-align: center;
+    font-weight: 400;
+    font-size: clamp(24px, 6.5vw, 32px);
     line-height: 1.1;
     color: var(--font-color-base);
     transition: color var(--transition-default);
 
-    @include media.lg-down {
-      font-size: 20px;
-      font-weight: 600;
-      text-transform: uppercase;
-      padding: 15px var(--container-padding-x);
-    }
     @include media.lg-up {
-      font-weight: 500;
       font-size: 14px;
       padding: 5px 0;
     }
@@ -95,6 +90,42 @@
       @include media.lg-up {
         color: var(--primary-color);
       }
+    }
+  }
+  &__nav-btn {
+    @include media.xs-up {
+      .btn {
+        font-size: 16px;
+      }
+    }
+    @include media.phone-down {
+      width: 100%;
+      padding: 0 var(--container-padding-x);
+
+      .btn {
+        width: 100%;
+      }
+    }
+    @include media.phone-up {
+      .btn {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+    }
+    @include media.lg-up {
+      display: none;
+    }
+  }
+  &__logo {
+    display: inline-flex;
+
+    @include media.lg-up {
+      display: none;
+    }
+
+    svg {
+      width: clamp(220px, 46vw, 267px);
+      height: auto;
     }
   }
   &__right {

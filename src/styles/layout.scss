@@ -111,6 +111,12 @@ body {
       transform: translate(-50%, -300px) rotate(-26deg);
       opacity: 0.6;
     }
+
+    .section {
+      &__bg {
+        object-position: bottom;
+      }
+    }
   }
   &_topics {
     .section {
@@ -156,7 +162,8 @@ body {
     padding: var(--header-height) 0 20px;
   }
   &_speakers,
-  &_sponsors {
+  &_sponsors,
+  &_subscription {
     &:target {
       scroll-margin-top: 20px;
 
