@@ -1,21 +1,72 @@
 @use "../helpers/media";
 
-.tickets-grid {
-  display: grid;
-  gap: 8px;
-  max-width: 986px;
-  margin: 0 auto;
+.embla {
+  &_tickets {
+    &.embla {
+      @media (min-width: 576px) and (max-width: 991px) {
+        overflow: hidden;
+        margin: 0 calc(-1 * var(--container-padding-x));
+      }
 
-  @include media.phone-up {
-    grid-template-columns: 324px;
-    justify-content: center;
-  }
-  @include media.md-up {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-  @include media.xxl-up {
-    gap: 28px;
+      .embla {
+        &__container {
+          display: grid;
+          gap: 8px;
+
+          @media (min-width: 576px) and (max-width: 991px) {
+            display: flex;
+            gap: 0;
+            padding: 0 var(--container-padding-x);
+          }
+          @include media.lg-up {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 986px;
+            margin: 0 auto;
+            gap: 22px;
+          }
+          @include media.xxl-up {
+            gap: 28px;
+          }
+        }
+        &__slide {
+          @media (min-width: 701px) and (max-width: 991px) {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            flex: 1;
+            flex: 0 0 47%;
+          }
+          @media (min-width: 576px) and (max-width: 700px) {
+            flex: 0 0 94%;
+          }
+
+          &:not(:first-child) {
+            @media (min-width: 576px) and (max-width: 991px) {
+              flex-basis: calc(47% + var(--container-padding-x));
+              padding-left: var(--container-padding-x);
+              margin-left: -10px;
+            }
+            @media (min-width: 576px) and (max-width: 700px) {
+              flex-basis: calc(94% + var(--container-padding-x));
+            }
+          }
+
+          &:last-child {
+            @media (min-width: 576px) and (max-width: 991px) {
+              margin-right: var(--container-padding-x);
+            }
+          }
+
+          .ticket {
+            height: 100%;
+
+            @media (min-width: 576px) and (max-width: 991px) {
+              user-select: none;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -29,12 +80,10 @@
   background-color: var(--bg-color-glass);
   transition: transform var(--transition-default);
 
-  @media (min-width: 768px) and (max-width: 991px) {
-    padding-top: 36px;
-  }
-
   &:hover {
-    transform: scale(1.05);
+    @include media.lg-up {
+      transform: scale(1.05);
+    }
   }
 
   &__title {
@@ -42,9 +91,6 @@
     line-height: 1.2;
     color: var(--primary-color);
 
-    @media (min-width: 768px) and (max-width: 991px) {
-      font-size: 18px;
-    }
     @include media.xl-up {
       font-size: 28px;
     }
@@ -56,10 +102,6 @@
     font-size: 68px;
     line-height: 1.1;
 
-    @media (min-width: 768px) and (max-width: 991px) {
-      font-size: 54px;
-      margin-bottom: 28px;
-    }
     @include media.xl-up {
       font-size: 78px;
     }
@@ -72,10 +114,6 @@
     gap: 20px;
     margin-bottom: 38px;
 
-    @media (min-width: 768px) and (max-width: 991px) {
-      margin-bottom: 28px;
-      gap: 16px;
-    }
     @include media.lg-up {
       gap: 0;
     }
@@ -90,9 +128,6 @@
     justify-content: center;
     margin-bottom: 10px;
 
-    @media (min-width: 768px) and (max-width: 991px) {
-      margin-bottom: 17px;
-    }
     @include media.lg-up {
       margin-bottom: 38px;
     }
@@ -105,10 +140,6 @@
     font-size: 16px;
     line-height: 1.4;
 
-    @media (min-width: 768px) and (max-width: 991px) {
-      font-size: 12px;
-    }
-
     &:not(:last-child) {
       margin-bottom: 4px;
     }
@@ -120,11 +151,6 @@
     .btn,
     .badge {
       width: 100%;
-
-      @media (min-width: 768px) and (max-width: 991px) {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
     }
   }
 }

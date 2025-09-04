@@ -25,10 +25,14 @@
     <div class="section__caption">
       <h2 class="title">Билеты</h2>
     </div>
-    <div class="tickets-grid">
-      {% for ticket in tickets %}
-        {% include "ticket-item.njk" %}
-      {% endfor %}
+    <div class="embla embla_tickets">
+      <div class="embla__container">
+        {% for ticket in tickets %}
+          <div class="embla__slide">
+            {% include "ticket-item.njk" %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>

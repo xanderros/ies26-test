@@ -4,9 +4,10 @@ import Fade from "embla-carousel-fade";
 
 // Global variables for Embla carousels
 const carousels = {
+  inspirations: null,
   topicsDefault: null,
   topicsReversed: null,
-  inspirations: null,
+  tickets: null,
   location: null,
 };
 
@@ -51,7 +52,7 @@ const setupNavigation = (container, carousel, isLooping = false) => {
   };
 };
 
-// Initialize Embla Carousel for inspirations section
+// Initialize Embla Carousel for Inspirations section
 function initEmblaInspirations() {
   destroyCarousel("inspirations");
 
@@ -68,32 +69,13 @@ function initEmblaInspirations() {
     containScroll: "trimSnaps",
     breakpoints: {
       "(min-width: 768px)": { slidesToScroll: 2 },
-      "(min-width: 992px)": { slidesToScroll: 3 },
     },
   };
 
   carousels.inspirations = EmblaCarousel(container, options);
 }
 
-// Initialize Embla Carousel for location section with fade effect
-function initEmblaLocation() {
-  destroyCarousel("location");
-
-  const container = document.querySelector(".embla_location");
-  if (!container) return;
-
-  const options = {
-    loop: true,
-    containScroll: "trimSnaps",
-    speed: 10,
-  };
-  carousels.location = EmblaCarousel(container, options, [Fade()]);
-
-  const cleanup = setupNavigation(container, carousels.location, true);
-  if (cleanup) cleanupFunctions.set("location", cleanup);
-}
-
-// Initialize Embla Carousel for topics section with AutoScroll plugin
+// Initialize Embla Carousel for Topics section with AutoScroll plugin
 function initEmblaTopics() {
   ["topicsDefault", "topicsReversed"].forEach(destroyCarousel);
 
@@ -128,11 +110,53 @@ function initEmblaTopics() {
   }
 }
 
+// Initialize Embla Carousel for Tickets section
+function initEmblaTickets() {
+  destroyCarousel("tickets");
+
+  if (window.innerWidth < 576 || window.innerWidth > 991) return;
+
+  const container = document.querySelector(".embla_tickets");
+  if (!container) return;
+
+  const options = {
+    loop: false,
+    align: "start",
+    dragFree: false,
+    slidesToScroll: 1,
+    containScroll: "trimSnaps",
+    breakpoints: {
+      "(min-width: 701px)": { slidesToScroll: 2 },
+    },
+  };
+
+  carousels.tickets = EmblaCarousel(container, options);
+}
+
+// Initialize Embla Carousel for Location section with fade effect
+function initEmblaLocation() {
+  destroyCarousel("location");
+
+  const container = document.querySelector(".embla_location");
+  if (!container) return;
+
+  const options = {
+    loop: true,
+    containScroll: "trimSnaps",
+    speed: 10,
+  };
+  carousels.location = EmblaCarousel(container, options, [Fade()]);
+
+  const cleanup = setupNavigation(container, carousels.location, true);
+  if (cleanup) cleanupFunctions.set("location", cleanup);
+}
+
 // Initialize all carousels
 const initAllCarousels = () => {
   initEmblaInspirations();
-  initEmblaLocation();
   initEmblaTopics();
+  initEmblaTickets();
+  initEmblaLocation();
 };
 
 // Initialize
