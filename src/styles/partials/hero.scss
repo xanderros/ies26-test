@@ -5,14 +5,11 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  min-height: 100svh;
-  padding: calc(var(--header-height) + 38px) 0 20px;
+  min-height: 100dvh;
+  padding: var(--header-height) 0 30px;
 
-  @include media.xs-up {
-    padding-bottom: 30px;
-  }
-  @include media.sm-up {
-    padding-bottom: 62px;
+  @include media.md-up {
+    padding: calc(var(--header-height) + 25px) 0 var(--header-height);
   }
 
   &:after {
@@ -24,24 +21,39 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
   }
+
   &__container {
+    flex: 1;
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     align-items: center;
-    row-gap: clamp(30px, 8vh, 120px);
+    justify-items: center;
+    grid-template-rows: 1fr auto 1fr;
     z-index: 1;
+    transition: grid-template-rows 0.3s ease-in-out;
+
+    @media (max-height: 699px) {
+      grid-template-rows: 0.7fr auto 1fr;
+    }
+  }
+  &__top {
+    margin: 20px 0;
+
+    @include media.md-up {
+      margin: 30px 0;
+    }
   }
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px 0 30px;
 
     @include media.md-up {
-      padding: 0 40px;
+      padding: 20px 40px 0;
     }
     @include media.xl-up {
-      padding: 0 20px;
+      padding: 20px 20px 0;
     }
   }
   &__logo {
@@ -54,7 +66,7 @@
       @include media.xs-up {
         width: 220px;
       }
-      @include media.xl-up {
+      @include media.md-up {
         width: auto;
       }
     }
@@ -99,16 +111,12 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 30px;
 
-    @include media.xs-up {
-      margin-top: 40px;
-    }
     @include media.md-up {
-      margin-top: clamp(40px, 8vh, 80px);
+      margin: 30px 0;
     }
     @include media.xl-up {
-      margin-top: clamp(40px, 10vh, 86px);
+      margin: 40px 0;
     }
     @include media.phone-down {
       width: 100%;

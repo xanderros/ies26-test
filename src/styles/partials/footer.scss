@@ -35,10 +35,10 @@
     }
     @include media.xxl-up {
       background: radial-gradient(
-        circle 367px at calc(50vw + 720px - 103px - var(--container-padding-x))
-          110%,
-        rgba(var(--yellow-rgb), 0.4) 15%,
-        rgba(var(--yellow-rgb), 0.18) 40%,
+        circle 310px at calc(50vw + 720px - 103px - var(--container-padding-x))
+          104%,
+        rgba(var(--yellow-rgb), 0.42) 12%,
+        rgba(var(--yellow-rgb), 0.16) 45%,
         transparent 100%
       );
     }
