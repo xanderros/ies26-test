@@ -83,7 +83,7 @@ const paths = {
     dest: "public/assets/fonts",
   },
   videos: {
-    src: "src/assets/video/**/*",
+    src: "src/assets/video/*.{mp4,webp,webm}",
     dest: "public/assets/video",
   },
 };
